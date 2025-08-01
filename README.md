@@ -1,4 +1,5 @@
 ```python
+# Tested with Python 3.11.9
 git clone https://github.com/simo94445/Discord-FFMPEG-command-generator.git
 cd Discord-FFMPEG-command-generator
 python generate_ffmpeg_command.py
