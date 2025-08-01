@@ -1,5 +1,6 @@
 ```python
 # Tested with Python 3.11.9
+# This assumes you have FFMPEG installed on your computer. I'm running this on Windows 11.
 git clone https://github.com/simo94445/Discord-FFMPEG-command-generator.git
 cd Discord-FFMPEG-command-generator
 python generate_ffmpeg_command.py
