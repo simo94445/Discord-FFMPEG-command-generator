@@ -37,7 +37,9 @@ def probe_video(path):
     result_audio = subprocess.run(cmd_audio, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     for line in result_audio.stdout.strip().splitlines():
         if line.startswith("bit_rate="):
-            audio_bitrate = int(line.split("=")[1])
+            value = line.split("=")[1]
+            if value != "N/A":
+                audio_bitrate = int(value)
     
     return duration, audio_bitrate
 
@@ -45,7 +47,7 @@ def calculate_video_bitrate(duration, audio_bitrate, max_filesize_mb):
     total_bits = max_filesize_mb * 8 * 1024 * 1024
     video_bits = total_bits - (audio_bitrate * duration)
     video_bitrate = video_bits / duration
-    fudge_factor = 0.95  # or 0.94 if you want to be extra safe
+    fudge_factor = 0.94  # or 0.94 if you want to be extra safe
     video_bitrate = video_bitrate * fudge_factor
     return int(round(video_bitrate / 1000) * 1000)
 
